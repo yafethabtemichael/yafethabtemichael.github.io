@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Module Exercises</title>
+    <style>
+    body{
+        background-color: pink;
+    }
+    </style>
+</head>
+<body>
+    <h2>Javascript Module Exercises</h2>
+    <hr>
+<p>Question 1:<br> Determine what this Javascript code will print out (without running it):</p>
+<p>Answer:<br> 1, 8, 8, 9, 10, 1</p>
+<hr>
+<br>
+<p>Question 2:<br> Define Global Scope and Local Scope in Javascript</p>
+<p>Answer: <br>Globel Scope: in which all the variables are accessible in the whole file and also can be accessed with
+    the window object.<br>
+    Local Scope: which is only accessible to the specific method. If it is declared in the a method it will be accessible
+    only in that method.
+</p>
+<hr>
+
+<p>Question 3: </p>
+<p>
+    Answer:
+    <br>(a) Do statements in Scope A have access to variables defined in Scope B and C? NO.
+    <br>(b) Do statements in Scope B have access to variables defined in Scope A? YES
+    <br>(c) Do statements in Scope B have access to variables defined in Scope C? NO.
+    <br>(d) Do statements in Scope C have access to variables defined in Scope A? YES.
+    <br>(e) Do statements in Scope C have access to variables defined in Scope B? YES.
+</p>
+
+<hr>
+<p>Question 4: <br>What will be printed by the following (answer without running it)?<br>
+    var x = 9;<br>
+    function myFunction() {<br>
+    return x * x;<br>
+    }<br>
+    document.write(myFunction());<br>
+    x = 5;<br>
+    document.write(myFunction());
+</p>
+
+<p>Answer:<br> 81 , 25</p>
+
+<hr>
+<p>
+    Question 5.<br>
+    var foo = 1;<br>
+    function bar() {<br>
+    if (!foo) {<br>
+    var foo = 10;<br>
+    }<br>
+    alert(foo);<br>
+    }<br>
+    bar();<br>
+
+</p>
+<p>Answer: <br>It will show 10 as in alert</p>
+<hr>
+<p>
+    Question 6:<br> Modify method and write tow methods
+</p>
+<p>
+    Answer: <br>
+    var Increment = (function () {<br>
+    var counter = 0;<br>
+    return {<br>
+    add: function () {<br>
+    counter = counter + 1;<br>
+    },<br>
+    reset: function () {<br>
+    counter = 0<br>
+    },<br>
+    print: function () {<br>
+    return counter;<br>
+    }<br>
+    }<br>
+    })();
+</p>
+<hr>
+<p>Question 7:<br> In the definition of add( ) shown in question 6, identify the "free" variable. In the context of a
+    function closure,
+    what is a "free" variable?</p>
+
+<p>Answer: <br> counter is the free variable.
+    Free variables are the variable which are global for the closure methods. Variable from the Parent Scope in the
+    closure is called free Variables.
+</p>
+<hr>
+<p>Question 8:<br>
+    The add( ) function defined in question 6 always adds 1 to the counter each time it is called. Write a
+    definition<br>
+    of a function make_adder(inc), whose return value is an add function with increment value inc (instead of 1).
+    Here<br>
+    is an example of using this function:
+</p>
+<p>
+    Answer: <br>
+    var add = (function () {<br>
+    var counter = 0;<br>
+    return function (value) {<br>
+    return function () {<br>
+    return counter += value;<br>
+    <br>
+    }<br>
+    };<br>
+    })();<br>
+    <br>
+    add5 = add(5);<br>
+    console.log(add5());<br>
+    console.log(add5());<br>
+    console.log(add5());<br>
+</p>
+<hr>
+
+<p>Question 9:<br> Suppose you are given a file of Javascript code containing a list of many function and variable
+    declarations.<br> All of
+    these function and variable names will be added to the Global Javascript namespace.<br> What simple modification to
+    the Javascript file can remove all the names from the Global namespace?
+</p>
+
+<p>Answer:<br> By using Module pattern all the Global name space will be converted to the function scope</p>
+<hr>
+<p>
+    Question 10:<br> Methods in Revealing Module Pattern<br>
+</p>
+
+<p> Answer:<br>
+    var Employee = (function () {<br>
+    <br>var name, age, salary;
+    <br>
+    <br>function getAge() {
+    <br>return age;
+    <br>}
+    <br>
+    <br>function getSalary() {
+    <br>return salary;
+    <br>}
+    <br>
+    <br>function getName() {
+    <br>return name;
+    <br>}
+    <br>
+    <br>var increaseSalaryMethod = function increaseSalary(percentage) {
+    <br>let percentageTotal = (percentage / 100) * getSalary();
+    <br>salary += percentageTotal
+    <br>console.log(salary);
+    <br> };
+    <br>var increaseAgeMethod = function incrementAge() {
+    <br>age = getAge() + 1;
+    <br>console.log(age);
+    <br>}; // uses private getAge( )
+    <br>
+    <br>
+
+
+    <br> var setAgeMethod = function setAge(newAge) {
+    <br>age = newAge;
+    <br>};
+    <br>
+    <br>var setSalaryMethod = function setSalary(newSalary) {
+    <br>salary = newSalary;
+    <br>};
+    <br>
+    <br>var setNameMethod = function setName(newName) {
+    <br>name = newName;
+    <br>}
+    <br>
+
+    <br>return {
+    <br>setAgeMethod,
+    <br>setSalaryMethod,
+    <br>setNameMethod,
+    <br>increaseSalaryMethod,
+    <br>increaseAgeMethod
+    <br>}
+
+    <br>
+    <br> })();
+
+    <br>
+    <br>Employee.setNameMethod("Atif");
+    <br>Employee.setSalaryMethod(100);
+    <br>Employee.setAgeMethod(26);
+    <br>Employee.increaseSalaryMethod(10);
+    <br>Employee.increaseAgeMethod();
+
+</p>
+
+<hr>
+<p>Question 11:<br> Implement question 10 as Anonymous Object Literal Return</p>
+<p>
+Answer:
+    <br> var Employee = (function () {
+
+    <br> var name, age, salary;
+
+    <br>function getAge() {
+    <br>return age;
+    <br>}
+    <br>
+    <br>function getSalary() {
+    <br>return salary;
+    <br>}
+    <br>
+    <br>function getName() {
+    <br>return name;
+    <br>}
+    <br>
+    <br>
+    <br>return {
+    <br>increaseSalaryMethod: function increaseSalary(percentage) {
+    <br>let percentageTotal = (percentage / 100) * getSalary();
+    <br>salary += percentageTotal
+    <br>console.log(salary);
+    <br>},
+    <br>increaseAgeMethod: function incrementAge() {
+    <br>age = getAge() + 1;
+    <br>console.log(age);
+    <br>},
+    <br>setAgeMethod: function setAge(newAge) {
+    <br>age = newAge;
+    <br>},
+    <br>setSalaryMethod: function setSalary(newSalary) {
+    <br>salary = newSalary;
+    <br>}, setNameMethod: function setName(newName) {
+    <br>name = newName;
+    <br>}
+    <br>}// end of return
+    <br>})();
+
+    <br>
+    <br>Employee.setNameMethod("Atif");
+    <br>Employee.setSalaryMethod(100);
+    <br>Employee.setAgeMethod(26);
+    <br>Employee.increaseSalaryMethod(10);
+    <br>Employee.increaseAgeMethod();
+</p>
+<hr>
+<p>Question 12:<br> Rewrite your answer to Question 10 using the Stacked Locally Scoped Object Literal Pattern.</p>
+<p>
+Answer:
+    <br> var Employee = (function () {
+
+    <br> var name, age, salary;
+    <br>
+    <br>function getAge() {
+    <br>return age;
+    <br>}
+    <br>
+    <br>function getSalary() {
+    <br>return salary;
+    <br>}
+    <br>
+    <br>function getName() {
+    <br>return name;
+    <br>}
+    <br>
+    <br>var methodObject = {
+    <br>increaseSalaryMethod: function increaseSalary(percentage) {
+    <br>let percentageTotal = (percentage / 100) * getSalary();
+    <br>salary += percentageTotal
+    <br>console.log(salary);
+    <br>},
+    <br>increaseAgeMethod: function incrementAge() {
+    <br>age = getAge() + 1;
+    <br>console.log(age);
+    <br>},
+    <br>setAgeMethod: function setAge(newAge) {
+    <br>age = newAge;
+    <br>},
+    <br>setSalaryMethod: function setSalary(newSalary) {
+    <br>salary = newSalary;
+    <br>}, setNameMethod: function setName(newName) {
+    <br>name = newName;
+    <br>}
+    <br>};
+    <br>return methodObject;
+    <br>})();
+    <br>
+    <br>
+    <br>Employee.setNameMethod("Atif");
+    <br>Employee.setSalaryMethod(100);
+    <br>Employee.setAgeMethod(26);
+    <br>Employee.increaseSalaryMethod(10);
+    <br>Employee.increaseAgeMethod();
+
+</p>
+<hr>
+<p>Question 13:<br> Implement Extension with methods setAddress(newAddress) and getAddress()</p>
+<p>Answer:
+<br>
+    Employee.extension = function () {<br>
+    var address = "Atif";<br>
+    <br>
+    function getAddrs() {<br>
+    return address;<br>
+    }<br>
+    <br>
+    return {<br>
+    setAddress: function (newAddress) {<br>
+    address = newAddress;<br>
+    <br>
+    }, getAddress: function () {<br>
+    return getAddrs();<br>
+    <br>}
+    <br>};
+    <br>};
+
+
+    <p>Question 14:<br> 14. What is the output of the following code?</p><br>
+    const promise = new Promise((resolve, reject) => {<br>
+    reject(“Hattori”);<br>
+    });<br>
+    promise.then(val => alert(“Success: “ + val))<br>
+    .catch(e => alert(“Error: “ + e));<br>
+
+    <p>Answer:
+        <br>
+        promise is rejected and the error handler is invoked.
+        <br>};
+        <br>};
+
+    <p>Question 15:<br> 14. What is the output of the following code?</p><br>
+    const promise = new Promise((resolve, reject) => {<br>
+    resolve(“Hattori”);<br>
+    setTimeout(()=> reject(“Yoshi”), 500);<br>
+    });<br>
+    promise.then(val => alert(“Success: “ + val))<br>
+    .catch(e => alert(“Error: “ + e));<br>
+
+    <p>Answer:
+        <br>
+        once promise is setted it cannot be changed. reject after 500ms will have no effect.
+        the success handler will be invoked.
+        <br>};
+        <br>};
+
+    <p>Question 16:<br> 14. What is the output of the following code?</p><br>
+    function job(state) {<br>
+    return new Promise(function(resolve, reject) {<br>
+    if (state) {<br>
+    resolve('success');<br>
+    } else {<br>
+    reject('error');<br>
+    }<br>
+    });<br>
+    }<br>
+    let promise = job(true);<br>
+    promise.then(function(data) {<br>
+    console.log(data);<br>
+    return job(false);})<br>
+    .catch(function(error) {<br>
+    console.log(error);<br>
+    return 'Error caught';<br>
+    });<br>
+
+
+    <p>Answer:
+        <br>
+        success<br>
+        error<br>
+        error caught<br>
+</p>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Scope Exercises</title>
+    <style>
+    body{
+        background-color: pink;
+    }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Scope Exercises</h2>
+    <hr>
+<p>
+    Question 1:<br> Determine what this Javascript code will print out (without running it):<br>
+    Answer:<br> 10,8,8,9,10,1
+</p>
+<hr>
+<p>
+    Question 2:<br> What is the difference between a method and function?<br>
+    Answer:<br> A function is a group of reusable code.Functions are defined in structural language and methods are defined in object oriented languages.
+    Functions are independent, they can be called without having an object, but methods are not independent. you can not
+    call them without the object reference.
+</p>
+
+<hr>
+<p>
+    Question 3:<br> What does 'this' refer to when used in a Java method?<br>
+    Answer:<br>The most common use of the this keyword is to eliminate the confusion between class attributes and parameters with the same name
+    (because a class attribute is shadowed by a method or constructor parameter).
+    'this' can be used inside the Method or constructor of Class. It(this) works as a reference to
+    the current Object.
+
+</p>
+<hr>
+<p>
+    Question 4:<br> What does 'this' refer to when used in a JavaScript method?<br>
+    Answer:<br> By default the execution context for an execution is global which means that if a code is being executed as
+    part of a simple function call then “this” refers to global object.
+</p>
+
+<hr>
+<p>
+    Question 5:<br> What does 'this' refer to when used in a JavaScript constructor function?<br>
+    Answer:<br> In a constructor function this does not have a value. It is a substitute for the new object. The value of
+    this will become the new object when a new object is created.<br>
+    The value of this, when used in an object, is the object itself.
+
+</p>
+<hr>
+<p>
+    Question 6:<br> Assume object x is the prototype for object y in Javascript. Object x has a method f( ) containing
+    keyword 'this'. When f is called by x.f( ), what does 'this' refer to?
+    Answer:<br> 'this' refers to the x object.
+</p>
+<hr>
+<p>
+    Question 7:<br> What is a free variable in JavaScript?<br>
+    Answer:<br> Free variables are simply the variables that are neither locally declared nor passed as parameter.<br>
+    In javascript closures, those are simply the variables that the function takes (read and write) in the enclosing
+    scope where is declared the closure or in a parent scope.
+</p>
+<hr>
+<p>Question 8:<br> Create an object that has properties with name = "fred"
+    and major="music" and a property that is a function
+    that takes 2 numbers and returns the smallest of the two,
+    or the square of the two if they are equal.<br>
+    Answer :
+    <br>var tempObject = {<br>
+    name: "fred",<br>
+    major: "Music",<br>
+    smallest: function (a, b) {<br>
+    if (a === b) {<br>
+    return a * a;<br>
+    } else if (a < b) {<br>
+    return a;<br>
+    } else {<br>
+    return b;<br>
+    }<br>
+    }<br>
+    };<br>
+
+    console.log(tempObject.smallest(1, 2));
+</p>
+<hr>
+<p>Question 9:<br> Write Javascript code for creating three Employee objects
+    using the "new" keyword and a constructor function.<br>
+    Employee objects have the following fields: name, salary, position<br>
+    Answer: <br>
+    function Employee(name, salary, position) {<br>
+    this.name = name;<br>
+    this.salary = salary;<br>
+    this.position = position;<br>
+    }<br>
+    <br>
+    var e1 = new Person("Mihre", 120000, "Software Developer");<br>
+    var e2 = new Person("Habtom", 110000, "Programmer");<br>
+    var e3 = new Person("brhane", 130000, "Developer");<br>
+</p>
+<hr>
+    <p>Question 10:<br>  Write a Javascript function that takes any number of input arguments
+        and returns the product of the arguments.<br>
+        Answer :
+        <br>function multiply(a, b) {<br>
+        let ans =1; for(let i=0;i<arguments.lenght;i++){
+        ans=ans*arguments[i]}
+        return ans;
+        return a*b;<br>
+        }<br>
+        console.log(multiply(5, 10));<br>
+    </p>
+    <hr>
+    <p>Question 11:<br>  Write an arrow function that returns the maximum of its three input arguments.<br>
+        Answer :
+        <br>le fmax=(a,b,c)=>{<br>
+        let max=a;<br>
+        if(b>a) max=b;<br>
+        if(c>max)max=c;<br>
+        return max;
+    </p>
+    <hr>
+</body>
+</html>
